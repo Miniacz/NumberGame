@@ -27,56 +27,71 @@ public class MainMenu {
 		
 		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
 			@Override public void keyPressed(GlobalKeyEvent event) {
-					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_UP) {
-						cursor = 1;
-											
-						if (listIndicator == listManager.userList.size()-1) {
-							listValueContainer = listIndicator;
-							listValueBackupContainer = 0;
-						} else {
-							listValueContainer = listManager.userList.get(listIndicator);
-							listValueBackupContainer = listManager.userList.get(listIndicator+1);
-							listManager.userList.set(listIndicator+1, listValueContainer);
-							listManager.userList.set(listIndicator, listValueBackupContainer);
-							listIndicator+=1;
-						}
-
-					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_DOWN) {
-						cursor = 2;
+				
+					switch (event.getVirtualKeyCode()) {
+						case GlobalKeyEvent.VK_UP: 		cursor = 1;
 						
-						if (listIndicator == 0) {
-							listValueContainer = listIndicator;
-							listValueBackupContainer = 0;
-						} else {
-							listValueContainer = listManager.userList.get(listIndicator);
-							listValueBackupContainer = listManager.userList.get(listIndicator-1);
-							listManager.userList.set(listIndicator-1, listValueContainer);
-							listManager.userList.set(listIndicator, listValueBackupContainer);
-							listIndicator-=1;
-						}
-
-					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_LEFT) {
+								if (listIndicator == listManager.userList.size()-1) {
+									listValueContainer = listIndicator;
+									listValueBackupContainer = 0;
+								} else {
+									listValueContainer = listManager.userList.get(listIndicator);
+									listValueBackupContainer = listManager.userList.get(listIndicator+1);
+									listManager.userList.set(listIndicator+1, listValueContainer);
+									listManager.userList.set(listIndicator, listValueBackupContainer);
+									listIndicator+=1;
+								}
+								
+							break;
+														
+						case GlobalKeyEvent.VK_DOWN:	cursor = 2;
 						
-						if (listIndicator == 0) {
-							listIndicator = 0;
-						} else {
-							listIndicator-=1;
-						}
+								if (listIndicator == 0) {
+									listValueContainer = listIndicator;
+									listValueBackupContainer = 0;
+								} else {
+									listValueContainer = listManager.userList.get(listIndicator);
+									listValueBackupContainer = listManager.userList.get(listIndicator-1);
+									listManager.userList.set(listIndicator-1, listValueContainer);
+									listManager.userList.set(listIndicator, listValueBackupContainer);
+									listIndicator-=1;
+								}
+								
+							break;
+							
+						case GlobalKeyEvent.VK_LEFT:	
+							
+								if (listIndicator == 0) {
+									listIndicator = 0;
+								} else {
+									listIndicator-=1;
+								}
+														
+							break;
+							
+						case GlobalKeyEvent.VK_RIGHT:
+							
+								if (listIndicator == ListHandler.userList.size()-1) {
+									listIndicator = ListHandler.userList.size()-1;
+								} else {
+									listIndicator+=1;
+								}
+							
+							break;
+							
+						case GlobalKeyEvent.VK_RETURN:
+							
+							runMainMenu = false;
 						
-					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_RIGHT) {
+							break;
+							
+						case GlobalKeyEvent.VK_ESCAPE:
+							
+							System.exit(0);
 						
-						if (listIndicator == ListHandler.userList.size()-1) {
-							listIndicator = ListHandler.userList.size()-1;
-						} else {
-							listIndicator+=1;
-						}
-						
-					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_RETURN) {
-						runMainMenu = false;
-						
-					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_ESCAPE) {
-						System.exit(0);
+							break;
 					}
+				
 			}
 		});
 		
