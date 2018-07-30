@@ -30,7 +30,8 @@ public class MainMenu {
 				
 					switch (event.getVirtualKeyCode()) {
 						case GlobalKeyEvent.VK_UP: 		cursor = 1;
-						
+								
+						// TODO implement GuardStatements to improve readbility of code
 								if (listIndicator == listManager.userList.size()-1) {
 									listValueContainer = listIndicator;
 									listValueBackupContainer = 0;
