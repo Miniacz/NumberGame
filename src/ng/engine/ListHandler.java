@@ -49,6 +49,7 @@ public class ListHandler {
 		boolean listsAreEqual = false;
 		equalityPoints = 0;
 
+		// search for equal elements in both lists
 		for (int i = 0; i < refList.size(); i++) {
 			if (userList.get(i).equals(refList.get(i))) {
 				equalityPoints+=1;
@@ -56,13 +57,13 @@ public class ListHandler {
 				equalityPoints-=1;
 			}
 		}
-
+		
+		// check if both lists are equal
 		if (equalityPoints == refList.size()) {
 			listsAreEqual = true;
 		}
 		
 		return listsAreEqual;
 	}
-	//TODO write comparison method
 	
 }
