@@ -138,25 +138,6 @@ public class MainMenu {
 		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 		
 		this.printGameInterface();
-		
-//		System.out.println("\nYour list:");
-//		listManager.printList();
-		
-		// key listener
-//		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
-//			@Override public void keyPressed(GlobalKeyEvent event) {
-//					if(event.getVirtualKeyCode()==GlobalKeyEvent.VK_UP) {
-//						cursor = 1;
-//					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_DOWN) {
-//						cursor = 2;
-//					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_RETURN) {
-//						runMainMenu = false;
-//					} else if (event.getVirtualKeyCode()==GlobalKeyEvent.VK_ESCAPE) {
-//						System.exit(0);
-//					}
-//			}
-//		});
-
 
 	}
 	
