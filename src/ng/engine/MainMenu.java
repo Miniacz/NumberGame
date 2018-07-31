@@ -2,10 +2,6 @@ package ng.engine;
 
 import java.io.IOException;
 
-// keyboard input tools
-import lc.kra.system.keyboard.*;
-import lc.kra.system.keyboard.event.*;
-
 public class MainMenu {
 
 	static boolean runMainMenu = true;
@@ -16,85 +12,14 @@ public class MainMenu {
 	static int listValueBackupContainer = listIndicator+1;
 	String indicator = "[<]";
 	
-	GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true);
+	KeyboardListener keyListener = new KeyboardListener();
 	ListHandler listManager = new ListHandler();
 	InputHandler inputManager = new InputHandler();
 
 	public void initializeMainMenu() throws IOException, InterruptedException {
 		
-		// key listener
-		// TODO throw out the key listener from this method
-		
-		keyboardHook.addKeyListener(new GlobalKeyAdapter() {
-			@Override public void keyPressed(GlobalKeyEvent event) {
-				
-					switch (event.getVirtualKeyCode()) {
-						case GlobalKeyEvent.VK_UP: 		cursor = 1;
-								
-						// TODO implement GuardClauses to improve readbility of code
-								if (listIndicator == listManager.userList.size()-1) {
-									listValueContainer = listIndicator;
-									listValueBackupContainer = 0;
-								} else {
-									listValueContainer = listManager.userList.get(listIndicator);
-									listValueBackupContainer = listManager.userList.get(listIndicator+1);
-									listManager.userList.set(listIndicator+1, listValueContainer);
-									listManager.userList.set(listIndicator, listValueBackupContainer);
-									listIndicator+=1;
-								}
-								
-							break;
-														
-						case GlobalKeyEvent.VK_DOWN:	cursor = 2;
-						
-								if (listIndicator == 0) {
-									listValueContainer = listIndicator;
-									listValueBackupContainer = 0;
-								} else {
-									listValueContainer = listManager.userList.get(listIndicator);
-									listValueBackupContainer = listManager.userList.get(listIndicator-1);
-									listManager.userList.set(listIndicator-1, listValueContainer);
-									listManager.userList.set(listIndicator, listValueBackupContainer);
-									listIndicator-=1;
-								}
-								
-							break;
-							
-						case GlobalKeyEvent.VK_LEFT:	
-							
-								if (listIndicator == 0) {
-									listIndicator = 0;
-								} else {
-									listIndicator-=1;
-								}
-														
-							break;
-							
-						case GlobalKeyEvent.VK_RIGHT:
-							
-								if (listIndicator == ListHandler.userList.size()-1) {
-									listIndicator = ListHandler.userList.size()-1;
-								} else {
-									listIndicator+=1;
-								}
-							
-							break;
-							
-						case GlobalKeyEvent.VK_RETURN:
-							
-							runMainMenu = false;
-						
-							break;
-							
-						case GlobalKeyEvent.VK_ESCAPE:
-							
-							System.exit(0);
-						
-							break;
-					}
-				
-			}
-		});
+		// key listener for MainMenu
+		keyListener.listenMainMenu();
 		
 		while(runMainMenu) {
 			
@@ -139,6 +64,9 @@ public class MainMenu {
 	}
 
 	public void initializeGameMenu() throws IOException, InterruptedException {
+		
+		keyListener.listenGameMenu();
+		
 		// screen clearing
 		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 				
@@ -148,7 +76,7 @@ public class MainMenu {
 		inputManager.collectUserInput();
 		
 		// create list of desired length
-		listManager.fillRefList(inputManager.getUserNumberInput());
+		ListHandler.fillRefList(inputManager.getUserNumberInput());
 		
 		// screen clearing
 		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

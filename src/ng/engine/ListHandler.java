@@ -9,9 +9,16 @@ public class ListHandler {
 	static LinkedList<Integer> userList = new LinkedList<Integer>();
 	int equalityPoints = 0;
 	
-	public void fillRefList(int length) {
+	public ListHandler() {
+		ListHandler.fillRefList(100);
+	}
+	
+	static void fillRefList(int length) {
 		
-		refList.clear(); // to clear any previous content
+		// to clear any previous content
+		
+		refList.clear(); 
+		userList.clear(); 
 		
 		for(int i = 0; i < length; i++) {
 			refList.add(i,i);
@@ -28,6 +35,7 @@ public class ListHandler {
 			System.out.print(refList.get(i) + " ");
 		}
 	}
+	
 	
 	public void printUserList() {
 		
