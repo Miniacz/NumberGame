@@ -5,6 +5,10 @@ import java.util.Collections;
 
 public class ListHandler {
 	
+	static int listIndicator = 0;
+	static int listValueContainer = listIndicator;
+	static int listValueBackupContainer = listIndicator + 1;
+	
 	static LinkedList<Integer> refList = new LinkedList<Integer>();
 	static LinkedList<Integer> userList = new LinkedList<Integer>();
 	int equalityPoints = 0;
@@ -16,7 +20,6 @@ public class ListHandler {
 	static void fillRefList(int length) {
 		
 		// to clear any previous content
-		
 		refList.clear(); 
 		userList.clear(); 
 		
@@ -40,7 +43,7 @@ public class ListHandler {
 	public void printUserList() {
 		
 		for(int i = 0; i < userList.size(); i++) {
-			if (MainMenu.listIndicator == i) {
+			if (ListHandler.listIndicator == i) {
 				System.out.print(userList.get(i) + ". ");
 			} else {
 				System.out.print(userList.get(i) + " ");
@@ -48,10 +51,12 @@ public class ListHandler {
 			
 		}
 		
+//		Debug helpers
 //		System.out.println("\n\n" + "MainMenu.listIndicator:"+ MainMenu.listIndicator);
 //		System.out.println("\n" + "MainMenu.listValueContainer:" + MainMenu.listValueContainer);
 //		System.out.println("\n" + "MainMenu.listValueBackupContainer:" + MainMenu.listValueBackupContainer);
 	}
+	
 	
 	public boolean compareLists() {
 		boolean listsAreEqual = false;

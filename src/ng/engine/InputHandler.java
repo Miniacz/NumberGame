@@ -24,7 +24,12 @@ public class InputHandler {
 				try {
 					Scanner inputScanner = new Scanner(System.in);
 					this.setUserNumberInput(inputScanner.nextInt());
-					correctInput = true;
+					if (userNumberInput > 20) {
+						correctInput = false;
+						System.out.println("Please enter smaller number. Any number over 20 will take extreme amount of time to complete.");
+					} else {
+						correctInput = true;
+					}
 				} catch (InputMismatchException e) {
 					System.out.println("Use valid numbers - from 0 to 9. Other characters are not permitted.");
 				}

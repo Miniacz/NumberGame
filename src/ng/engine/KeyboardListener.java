@@ -40,50 +40,50 @@ public class KeyboardListener {
 					switch (event.getVirtualKeyCode()) {
 						case GlobalKeyEvent.VK_UP: 
 								
-								if (MainMenu.listIndicator == ListHandler.userList.size()-1) {
-									MainMenu.listValueContainer = MainMenu.listIndicator;
-									MainMenu.listValueBackupContainer = 0;
+								if (ListHandler.listIndicator == ListHandler.userList.size()-1) {
+									ListHandler.listValueContainer = ListHandler.listIndicator;
+									ListHandler.listValueBackupContainer = 0;
 								} else {
-									MainMenu.listValueContainer = ListHandler.userList.get(MainMenu.listIndicator);
-									MainMenu.listValueBackupContainer = ListHandler.userList.get(MainMenu.listIndicator+1);
-									ListHandler.userList.set(MainMenu.listIndicator+1, MainMenu.listValueContainer);
-									ListHandler.userList.set(MainMenu.listIndicator, MainMenu.listValueBackupContainer);
-									MainMenu.listIndicator+=1;
+									ListHandler.listValueContainer = ListHandler.userList.get(ListHandler.listIndicator);
+									ListHandler.listValueBackupContainer = ListHandler.userList.get(ListHandler.listIndicator+1);
+									ListHandler.userList.set(ListHandler.listIndicator+1, ListHandler.listValueContainer);
+									ListHandler.userList.set(ListHandler.listIndicator, ListHandler.listValueBackupContainer);
+									ListHandler.listIndicator+=1;
 								}
 								
 							break;
 														
 						case GlobalKeyEvent.VK_DOWN:
 									
-							if (MainMenu.listIndicator == 0) {
-								MainMenu.listValueContainer = MainMenu.listIndicator;
-								MainMenu.listValueBackupContainer = 0;
+							if (ListHandler.listIndicator == 0) {
+								ListHandler.listValueContainer = ListHandler.listIndicator;
+								ListHandler.listValueBackupContainer = 0;
 							} else {
-								MainMenu.listValueContainer = ListHandler.userList.get(MainMenu.listIndicator);
-								MainMenu.listValueBackupContainer = ListHandler.userList.get(MainMenu.listIndicator-1);
-								ListHandler.userList.set(MainMenu.listIndicator-1, MainMenu.listValueContainer);
-								ListHandler.userList.set(MainMenu.listIndicator, MainMenu.listValueBackupContainer);
-								MainMenu.listIndicator-=1;
+								ListHandler.listValueContainer = ListHandler.userList.get(ListHandler.listIndicator);
+								ListHandler.listValueBackupContainer = ListHandler.userList.get(ListHandler.listIndicator-1);
+								ListHandler.userList.set(ListHandler.listIndicator-1, ListHandler.listValueContainer);
+								ListHandler.userList.set(ListHandler.listIndicator, ListHandler.listValueBackupContainer);
+								ListHandler.listIndicator-=1;
 							}
 							
 							break;
 							
 						case GlobalKeyEvent.VK_LEFT:	
 							
-								if (MainMenu.listIndicator == 0) {
-									MainMenu.listIndicator = 0;
+								if (ListHandler.listIndicator == 0) {
+									ListHandler.listIndicator = 0;
 								} else {
-									MainMenu.listIndicator-=1;
+									ListHandler.listIndicator-=1;
 								}
 														
 							break;
 							
 						case GlobalKeyEvent.VK_RIGHT:
 							
-								if (MainMenu.listIndicator == ListHandler.userList.size()-1) {
-									MainMenu.listIndicator = ListHandler.userList.size()-1;
+								if (ListHandler.listIndicator == ListHandler.userList.size()-1) {
+									ListHandler.listIndicator = ListHandler.userList.size()-1;
 								} else {
-									MainMenu.listIndicator+=1;
+									ListHandler.listIndicator+=1;
 								}
 							
 							break;

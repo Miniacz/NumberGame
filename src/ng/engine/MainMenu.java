@@ -7,9 +7,7 @@ public class MainMenu {
 	static boolean runMainMenu = true;
 	static boolean runGUI = true;
 	static byte cursor = 1;
-	static int listIndicator = 0;
-	static int listValueContainer = listIndicator;
-	static int listValueBackupContainer = listIndicator+1;
+
 	String indicator = "[<]";
 	
 	KeyboardListener keyListener = new KeyboardListener();
@@ -47,13 +45,16 @@ public class MainMenu {
 	}
 	
 	public void printMainMenu(int option) {
+		
 		switch (option) {
+		
 		case 1:
 			System.out.println("=== NUMBER GAME === \n");
 			System.out.println("Use [up] & [down] arrow keys to navigate. \nConfirm with [enter], terminate program with [escape] key.\n");
 			System.out.printf("1. Start Game %5s", indicator + "\n");
 			System.out.println("2. Exit ");
 			break;
+			
 		case 2:
 			System.out.println("=== NUMBER GAME === \n");
 			System.out.println("Use [up] & [down] arrow keys to navigate. \nConfirm with [enter], terminate program with [escape] key.\n");
@@ -70,7 +71,7 @@ public class MainMenu {
 		// screen clearing
 		new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 				
-		System.out.println("How long list would You like to sort? Enter a number, using digitals and confirm with [enter] key.");
+		System.out.println("How long list would You like to sort? Enter a number below 20, using digitals and confirm with [enter] key.");
 		
 		// get user input
 		inputManager.collectUserInput();
